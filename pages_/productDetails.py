@@ -1,10 +1,12 @@
 from selenium.webdriver.common.by import By
+from pages_.basePage import BasePage
 
-class ProductDetails():
+
+class ProductDetails(BasePage):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
+        self.__addToCartButtonLocator = (By.ID, "add-to-cart-button")
 
     def click_on_add_to_cart_button(self):
-        addToCartButton = self.driver.find_element(By. ID, "add-to-cart-button")
-        addToCartButton.click()
-
+        addToCartButtonElement = self._find_element(self.__addToCartButtonLocator)
+        self._click(addToCartButtonElement)

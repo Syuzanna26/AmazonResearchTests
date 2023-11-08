@@ -1,22 +1,22 @@
 from selenium.webdriver.common.by import By
+from pages_.basePage import BasePage
 
 
-class NavigationBar():
+class NavigationBar(BasePage):
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
+        self.__searchFieldLocator = (By.ID, "twotabsearchtextbox")
+        self.__searchButtonLocator = (By.ID, "nav-search-submit-button")
+        self.__cartIconLocator = (By.ID, "nav-cart")
 
     def fill_in_search_field(self, text):
-        searchFieldElement = self.driver.find_element(By. ID, "twotabsearchtextbox")
-        searchFieldElement.send_keys(text)
+        searchFieldElement = self._find_element(self.__searchFieldLocator)
+        self._fill_field(searchFieldElement, text)
 
     def click_on_search_button(self):
-        searchButtonElement = self.driver.find_element(By. ID, "nav-search-submit-button")
-        searchButtonElement.click()
+        searchButtonElement = self._find_element(self.__searchButtonLocator)
+        self._click(searchButtonElement)
 
-    def click_on_cart_button(self):
-        cartButtonElement = self.driver.find_element(By. ID, "nav-cart")
-        cartButtonElement.click()
-
-    def click_on_returns_orders_button(self):
-        returnsOrdersButton = self.driver.find_element(By. ID, "nav-orders")
-        returnsOrdersButton.click()
+    def click_on_cart_icon(self):
+        cartIconElement = self._find_element(self.__cartIconLocator)
+        self._click(cartIconElement)

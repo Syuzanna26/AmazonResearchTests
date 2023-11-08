@@ -1,25 +1,28 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from pages_.basePage import BasePage
 
-class LoginPage():
+
+class LoginPage(BasePage):
     def __init__(self, driver):
-        self.driver = driver
-        pass
-    def fill_usernamname_field(self, username):
-        userNameFieldElement = self.driver.find_element(By. ID, "ap_email")
-        userNameFieldElement.clear()
-        userNameFieldElement.send_keys(username)
+        super().__init__(driver)
+        self.__usernameFieldLocator = (By.ID, "ap_email")
+        self.__continueButtonLocator = (By.ID, "continue")
+        self.__passwordFieldLocator = (By.ID, "ap_password")
+        self.__signInButtonLocator = (By.ID, "signInSubmit")
 
-    def click_on_continu_button(self):
-        continuButtonElement = self.driver.find_element(By.ID, "continue")
-        continuButtonElement.click()
+    def fill_username_field(self, username):
+        userNameFieldElement = self._find_element(self.__usernameFieldLocator)
+        self._fill_field(userNameFieldElement, username)
+
+    def click_on_continue_button(self):
+        continueButtonElement = self._find_element(self.__continueButtonLocator)
+        self._click(continueButtonElement)
 
     def fill_password_field(self, password):
-        passwordFieldElement = self.driver.find_element(By.ID, "ap_password")
-        passwordFieldElement.clear()
-        passwordFieldElement.send_keys(password)
+        passwordFieldElement = self._find_element(self.__passwordFieldLocator)
+        self._fill_field(passwordFieldElement, password)
 
     def click_on_signin_button(self):
-        signInButtonElement = self.driver.find_element(By.ID, "signInSubmit")
-        signInButtonElement.click()
-    
+        signInButtonElement = self._find_element(self.__signInButtonLocator)
+        self._click(signInButtonElement)
