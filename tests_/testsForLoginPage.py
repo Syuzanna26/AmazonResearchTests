@@ -5,6 +5,8 @@ from pages_.loginPage import LoginPage
 from selenium.webdriver.support.events import EventFiringWebDriver
 from common_.utilities_.customListener import MyListener
 
+
+# Test case for positive login condition.
 class Login(unittest.TestCase):
     def setUp(self):
         self.simpleDriver = webdriver.Chrome()
@@ -20,12 +22,10 @@ class Login(unittest.TestCase):
         loginPageObj.fill_username_field("syuzanna26.12@gmail.com")
         loginPageObj.click_on_continue_button()
         loginPageObj.fill_password_field("Davit2602")
-        time.sleep(7)
-        # time sleep is done to avoid captcha
+        time.sleep(7)  # time sleep is done to avoid captcha given by Amazon website
         loginPageObj.click_on_signin_button()
 
         self.assertEqual('Amazon.com. Spend less. Smile more.', loginPageObj._get_title())
 
     def tearDown(self):
         self.driver.close()
-

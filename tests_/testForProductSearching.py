@@ -10,8 +10,8 @@ from common_.utilities_.customListener import MyListener
 from selenium.webdriver.support.events import EventFiringWebDriver
 
 
+# Test case for product searching and adding it successfully in a cart.
 class ProductSearching(unittest.TestCase):
-
     def setUp(self):
         self.simpleDriver = webdriver.Chrome()
         self.driver = EventFiringWebDriver(self.simpleDriver, MyListener())
@@ -24,8 +24,7 @@ class ProductSearching(unittest.TestCase):
         self.loginPageObj.fill_username_field("syuzanna26.12@gmail.com")
         self.loginPageObj.click_on_continue_button()
         self.loginPageObj.fill_password_field("Davit2602")
-        time.sleep(7)
-        # time sleep is done to avoid captcha
+        time.sleep(7)  # time sleep is done to avoid captcha given by Amazon website
         self.loginPageObj.click_on_signin_button()
 
     def test_for_product_searching_adding_in_cart(self):

@@ -28,7 +28,6 @@ class BasePage():
         webElement.send_keys(text)
         logger("INFO", "The text is successfully added to element")
 
-
     def _get_title(self):
         logger("INFO", f"The title is found successfully: {self.driver.title}")
         return self.driver.title
