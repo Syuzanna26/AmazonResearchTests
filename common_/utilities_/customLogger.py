@@ -2,7 +2,6 @@ import logging
 from datetime import date
 import os
 from pathlib import Path
-import inspect
 
 
 def get_root_dir_name():
@@ -15,23 +14,17 @@ def get_root_dir_name():
             command += ".parent"
 
 
-def logger(level, message, fileName=os.path.join(get_root_dir_name(), 'logsOfMethods_', f'log_{date.today()}.log')):
+def logger(level, message, fileName=os.path.join(get_root_dir_name(), '_logsOfMethods_', f'log_{date.today()}.log')):
     logging.basicConfig(level=logging.INFO, filename=fileName, filemode="a",
                         format="%(asctime)-12s %(levelname)s %(message)s",
                         datefmt="%d-%m-%Y %H:%M:%S")
-    # print(os.path.join(get_root_dir_name(), '_logs_', f'log_{date.today()}.log'))
     if level == "INFO":
         logging.info(message)
-        return
-    if level == "DEBUG":
+    elif level == "DEBUG":
         logging.debug(message)
-        return
-    if level == "WARNING":
+    elif level == "WARNING":
         logging.warning(message)
-        return
-    if level == "ERROR":
+    elif level == "ERROR":
         logging.error(message)
-        return
-    if level == "CRITICAL":
+    elif level == "CRITICAL":
         logging.critical(message)
-        return
