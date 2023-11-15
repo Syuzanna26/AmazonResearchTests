@@ -10,7 +10,7 @@ from common_.utilities_.customListener import MyListener
 from selenium.webdriver.support.events import EventFiringWebDriver
 
 
-# Test case for product searching and adding it successfully in a cart.
+# Test case for product searching and adding it successfully in cart.
 class ProductSearching(unittest.TestCase):
     def setUp(self):
         self.simpleDriver = webdriver.Chrome()
@@ -18,8 +18,7 @@ class ProductSearching(unittest.TestCase):
         self.driver.implicitly_wait(10)
         self.driver.delete_all_cookies()
         self.driver.maximize_window()
-        self.driver.get(
-            "https://www.amazon.com/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.com%2F%3Fref_%3Dnav_custrec_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=usflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0")
+        self.driver.get("https://www.amazon.com/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.com%2F%3Fref_%3Dnav_custrec_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=usflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0")
         self.loginPageObj = LoginPage(self.driver)
         self.loginPageObj.fill_username_field("syuzanna26.12@gmail.com")
         self.loginPageObj.click_on_continue_button()
@@ -29,10 +28,12 @@ class ProductSearching(unittest.TestCase):
 
     def test_for_product_searching_adding_in_cart(self):
         navigationBarObj = NavigationBar(self.driver)
-        navigationBarObj.fill_in_search_field("Monster truck")
+        navigationBarObj.fill_in_search_field("Christmas tree")
         navigationBarObj.click_on_search_button()
 
         resultPageObj = ResultPage(self.driver)
+        resultPageObj.click_on_sort_by_button()
+        resultPageObj.click_on_best_sellers_button()
         resultPageObj.click_on_first_product_from_list()
 
         productDetailsObj = ProductDetails(self.driver)
