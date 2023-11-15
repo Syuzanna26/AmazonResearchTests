@@ -10,6 +10,8 @@ class LoginPage(BasePage):
         self.__continueButtonLocator = (By.ID, "continue")
         self.__passwordFieldLocator = (By.ID, "ap_password")
         self.__signInButtonLocator = (By.ID, "signInSubmit")
+        self.__incorrectPasswordErrorMessageTextLocator = (By.CLASS_NAME, "a-list-item")
+        self.__incorrectEmailErrorMessageTextLocator = (By.CLASS_NAME, "a-list-item")
 
     def fill_username_field(self, username):
         userNameFieldElement = self._find_element(self.__usernameFieldLocator)
@@ -26,3 +28,11 @@ class LoginPage(BasePage):
     def click_on_signin_button(self):
         signInButtonElement = self._find_element(self.__signInButtonLocator)
         self._click(signInButtonElement)
+
+    def get_incorrect_password_error_message_text(self):
+        incorrectPasswordErrorMessageTextElement = self._find_element(self.__incorrectPasswordErrorMessageTextLocator)
+        return self._get_element_text(incorrectPasswordErrorMessageTextElement)
+
+    def get_incorrect_email_error_message_text(self):
+        incorrectEmailErrorMessageTextElement = self._find_element(self.__incorrectEmailErrorMessageTextLocator)
+        return self._get_element_text(incorrectEmailErrorMessageTextElement)

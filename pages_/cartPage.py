@@ -15,3 +15,11 @@ class CartPage(BasePage):
     def delete_first_product_from_cart(self):
         deleteFirstProductButtonElement = self._find_element(self.__deleteFirstProductButtonLocator)
         self._click(deleteFirstProductButtonElement)
+
+    def validate_emptiness_of_cart(self):
+        cartCounElement = self._find_element(self.__cartCountLocator)
+        if int(self._get_element_text(cartCounElement)) == 0:
+            print("Warning! The Cart Is Empty")
+
+
+
