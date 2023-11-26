@@ -2,6 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from common_.utilities_.customLogger import *
+from selenium.webdriver.common.action_chains import ActionChains
+
 
 
 class BasePage():
@@ -13,9 +15,7 @@ class BasePage():
             element = WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located(locator))
             logger("INFO", f"The locator of element is found successfully: {locator}")
             return element
-
         except:
-            print("Error: Element Not Found.")
             logger("ERROR", "Element Not Found")
             exit(1)
 
@@ -35,3 +35,8 @@ class BasePage():
     def _get_element_text(self, webElement):
         logger("INFO", f"Text is founded: {webElement.text}")
         return webElement.text
+
+    def _mouse_move(self, element):
+        action = ActionChains(self.driver)
+        action.move_to_element(element)
+        action.perform()
