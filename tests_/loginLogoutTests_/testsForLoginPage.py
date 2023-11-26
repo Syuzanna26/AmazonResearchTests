@@ -1,6 +1,6 @@
 import time
-from pages_.loginLogoutPages_.loginPage import LoginPage
-from testData_.testData import validUser, userWithInvalidPassword,userWithInvalidUsername, signInPageUrl
+from pages_.loginPage_.loginPage import LoginPage
+from testData_.testData import validUser, userWithInvalidPassword, userWithInvalidUsername, signInPageUrl
 from tests_.baseTest import BaseTestWithoutLogin
 
 
