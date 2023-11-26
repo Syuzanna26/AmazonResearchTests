@@ -1,7 +1,7 @@
-from pages_.navigationBar import NavigationBar
-from pages_.cartPage import CartPage
-from pages_.searchResultPage import SearchResultPage
-from pages_.productDetailsPage import ProductDetailsPage
+from pages_.navigationBarPages_.navigationBar import NavigationBar
+from pages_.navigationBarPages_.cartPage import CartPage
+from pages_.productRelatedPages_.searchResultPage import SearchResultPage
+from pages_.productRelatedPages_.productDetailsPage import ProductDetailsPage
 from tests_.baseTest import BaseTestWithLogin
 from testData_.testData import product1
 
@@ -16,7 +16,7 @@ class ProductDeletion(BaseTestWithLogin):
 
         cartPagrObj = CartPage(self.driver)
 
-        self.assertEqual("No items saved for later", cartPagrObj.get_cart_emptiness_validating_message_text())
+        self.assertEqual("Your Amazon Cart is empty.", cartPagrObj.get_cart_emptiness_validating_message_text())
 
     def test_for_first_product_deletion(self):
         navigatinBarObj = NavigationBar(self.driver)

@@ -1,6 +1,6 @@
 import time
-from pages_.languageSettingsPage import LanguageSettings
-from pages_.navigationBar import NavigationBar
+from pages_.navigationBarPages_.languageSettingsPage import LanguageSettings
+from pages_.navigationBarPages_.navigationBar import NavigationBar
 from tests_.baseTest import BaseTestWithLogin
 
 
